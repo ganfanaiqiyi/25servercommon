@@ -1,0 +1,51 @@
+<style>
+    .bootstrap-table tr td .text-muted {color:#888;}
+    /* .pull-right{display: none;} */
+
+    .smallimg{
+        width:32px;
+        height:32px;
+    }
+
+    .bigimg{width:600px;position: fixed;left: 0;top: 0; right: 0;bottom: 0;margin:auto;display: none;z-index:9999;border: 10px solid #fff;}
+        .mask{position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #000;opacity:0.5;filter: Alpha(opacity=50);z-index: 98;transition:all 1s;display: none}
+        .bigbox{width:840px;background: #fff;border:1px solid #ededed;margin:0 auto;border-radius: 10px;overflow: hidden;padding:10px;}
+        .bigbox>.imgbox{width:400px;height:250px;float:left;border-radius:5px;overflow: hidden;margin: 0 10px 10px 10px;}
+        .bigbox>.imgbox>img{width:100%;}
+        .imgbox:hover{cursor:zoom-in}
+        .mask:hover{cursor:zoom-out}
+        .mask>img{position: fixed;right:10px;top: 10px;width: 60px;}
+        .mask>img:hover{cursor:pointer}
+</style>
+<div class="panel panel-default panel-intro">
+    {:build_heading()}
+
+    <div class="panel-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    <div id="toolbar" class="toolbar">
+                        {:build_toolbar('refresh')}
+
+                        <button class="btn btn-success btn-search-default">待审核</button>
+                        <button class="btn btn-success btn-search-success">审核成功</button>
+                        <button class="btn btn-success btn-search-fail">审核失败</button>
+                        
+                    </div>
+                    <table id="table" class="table table-bordered table-hover" data-pagination="true" width="100%">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="bigbox">
+<img src="" alt="" class="bigimg" style="width:400px;height:738px;">
+    <div class="mask">
+        <img src="img/close.png" alt="">
+    </div>
+</div>
+
+<script src="/assets/js/zoom.js"></script>

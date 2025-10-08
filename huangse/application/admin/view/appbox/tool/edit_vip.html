@@ -1,0 +1,84 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    <input type="hidden" name="row[id]" value="{$row.id}">
+    
+    <div class="form-group">
+        <label for="c-username" class="control-label col-xs-12 col-sm-2">ID:</label>
+        <div class="col-xs-12 col-sm-4">
+            <p class="form-control-static">{$row.id}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-username" class="control-label col-xs-12 col-sm-2">{:__('Username')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <p class="form-control-static">{$row.username}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-nickname" class="control-label col-xs-12 col-sm-2">VIP:</label>
+        <div class="col-xs-12 col-sm-4">
+            <p class="form-control-static">
+            {switch name="vipStatus"}
+                {case value="1"}<span style="color:green;">已开通</span>{/case}
+                {case value="2"}<span style="color:red;">已过期</span>{/case}
+                {default /}<span style="color:blue;">未开通</span>
+            {/switch}
+            </p>
+        </div>
+    </div>
+    
+    {if condition="($vipStatus == 1) OR ($vipStatus == 2) "}
+    <div class="form-group">
+        <label for="c-nickname" class="control-label col-xs-12 col-sm-2">VIP过期时间:</label>
+        <div class="col-xs-12 col-sm-4">
+            <p class="form-control-static">{$row.endTime|date="Y-m-d H:i:s",###}</p>
+            
+        </div>
+    </div>
+    {/if}
+
+    <div class="form-group">
+        <label for="c-password" class="control-label col-xs-12 col-sm-2">开通时长:</label>
+        <div class="col-xs-12 col-sm-4">
+            <div class="input-group">
+                <input type="text" name="val" class="form-control" aria-label="...">
+                <div class="input-group-addon no-border no-padding" style="width:50px;">
+                    <select class="form-control" name="unit">
+                        <option>日</option>
+                        <option>月</option>
+                        <option>年</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-nickname" class="control-label col-xs-12 col-sm-2">快捷选择:</label>
+        <div class="col-xs-12 col-sm-4">
+            <p class="form-control-static">
+                <a href="javascript:inputVal(1,'日');">1日</a>
+                <a href="javascript:inputVal(1,'月');">1月</a>
+                <a href="javascript:inputVal(3,'月');">3月</a>
+                <a href="javascript:inputVal(6,'月');">半年</a>
+                <a href="javascript:inputVal(1,'年');">1年</a>
+                <a href="javascript:inputVal(100,'年');">永久</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="c-nickname" class="control-label col-xs-12 col-sm-2">操作说明:</label>
+        <div class="col-xs-12 col-sm-4">
+            <textarea name="remark" class="form-control" rows="3"></textarea>
+           
+        </div>
+    </div>
+    
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

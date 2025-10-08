@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta data-n-head="true" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="referrer" content="no-referrer" />
+    <title>绿巨人视频</title>
+    <meta data-n-head="true" name="keywords" content="">
+    <meta data-n-head="true" name="description" content="">
+    <link rel="shortcut icon" href="/favicon.ico?_v=20220812">
+    <link rel="stylesheet" href="{$tpl_path}/iconfont/iconfont.css?_v=20220812">
+
+    <link rel="stylesheet" href="{$tpl_path}/css/reset.css?_v=20220812">
+    <script src="{$tpl_path}/layer/mobile/layer.js?_v=20220812"></script>
+
+    <script type="text/javascript" charset="UTF-8" src="https://web.cdn.openinstall.io/openinstall.js"></script>
+    <script type="text/javascript">
+        var u = navigator.userAgent;
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if(isIOS){
+            var iosUrl = "{$site.ios_down_url}";
+            if(iosUrl){
+                location.href = iosUrl;
+            }
+            //location.href = "{$ios_url}?channelCode={$channel}";
+        }
+
+        var data = OpenInstall.parseUrlParams();
+
+        if(!data){
+            data = {};
+        }
+        if(!data.channelCode){
+            data.channelCode = 'c_1';
+        }
+
+        var channelCode = data.channelCode;
+
+        new OpenInstall({
+            appKey : "ctaon8",
+            onready : function() {
+                var m = this, button = document.getElementById("btn_down"),bgImage=document.getElementById("bgImage");
+                button.onclick = function() {
+                    // if(isIOS){
+                    //     location.href = "{$ios_url}";
+                    //     return false;
+                    // }
+
+                    m.install({data:data,channelCode:channelCode});//延迟指定绑定参数与渠道编号
+                    return false;
+                };
+            }
+        }, data);
+
+        
+    </script>
+    <script>
+        (function (c) {
+            var e = document.documentElement || document.body,
+                a = "orientationchange" in window ? "orientationchange" : "resize",
+                b = function () {
+                    var f = e.clientWidth;
+                    e.style.fontSize = (f >= 750) ? "100px" : 100 * (f / 750) + "px";
+                    // e.style.fontSize = (f >= 580) ? "77px" : 77 * (f / 580) + "px"
+                };
+            b();
+            c.addEventListener(a, b, false)
+        })(window);
+        window.browser = function () {
+            var u = navigator.userAgent, app = navigator.appVersion;
+            return {
+                trident: u.indexOf('Trident') > -1, //IE内核
+                presto: u.indexOf('Presto') > -1, //opera内核
+                webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,//火狐内核
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                // ios: !!u.match(/\\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                ios: /(iPhone|iPad|iPod|iOS|Mac)/i.test(u),
+                android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1, //android终端
+                iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                iPad: /(?:iPad|PlayBook)/.test(u), //是否iPad
+                webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                weixin: u.indexOf('MicroMessenger') > -1, //是否微信 （2015-01-22新增）
+                qq: u.match(/QQ/i) == "qq", //是否QQ,
+                safari: /Safari/.test(u) && !/Chrome/.test(u) && u.indexOf('MQQBrowser') < 0
+            };
+        }();
+
+        
+    </script>
+    <style>
+        html,
+        body,
+        .mobile {
+            width: 100%;
+            height: 100%;
+        }
+
+        #body {
+            background-color: #000;
+            background-image: url("{$tpl_path}/image/bg.jpg");
+            background-size: cover;
+            font-size: 0.24rem;
+            max-width: 580px;
+            margin: 0 auto !important;
+            position: relative;
+            /*overflow:hidden;*/
+            height: 100%;
+        }
+
+        .mobile {
+            color: #fff;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .mobile .fixed-contact {
+            position: absolute;
+            left: 0.2rem;
+            top: 0.2rem;
+            width: 2.3rem;
+            box-sizing: border-box;
+            z-index: 9;
+            display: block;
+        }
+
+        .mobile .fixed-contact img {
+            width: 100%;
+        }
+
+        .mobile .fixed-footer {
+            z-index: 9;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 0.24rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mobile .fixed-footer .logo {
+            width: 1.1rem;
+            height: 1.1rem;
+            margin-bottom: 0.3rem;
+            border-radius: 12px;
+        }
+
+        .mobile .fixed-footer .slogan {
+            height: 0.36rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .mobile .fixed-footer .download-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .mobile .fixed-footer .download-btn {
+            pointer-events: auto;
+            width: 3rem;
+            height: 0.7rem;
+            max-height: 7vh;
+            margin-bottom: 0.3rem;
+            /*display: none;*/
+        }
+
+        .mobile .fixed-footer .download-btn a {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.45rem;
+            background: #ff5353;
+            font-size: 0.28rem;
+            color: #ffdfb4;
+        }
+
+        .mobile .fixed-footer .download-btn a .iconfont {
+            margin-right: 0.1rem;
+            position: relative;
+            top: -0.02rem;
+            color: #fff;
+        }
+
+        .mobile .fixed-footer .download-btn img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            padding-bottom: 5rem;
+            /*user-select: none;*/
+        }
+
+        .time {
+            font-size: 0.85rem;
+            color: #fff;
+            margin-top: 0.2rem;
+            margin-bottom: 0.14rem;
+            /*font-family: 'NotoSansOriya';*/
+            font-family: "PingFang SC", "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
+            letter-spacing: 0.12rem;
+        }
+
+        #downloadBtn-iosStore,
+        #downloadBtn-iosTf,
+        #downloadBtn-iosSign,
+        #downloadBtn-android {
+            margin-left: 12px;
+            margin-right: 12px;
+        }
+
+        #downloadBtn-iosSign a {
+            background: #722bff;
+        }
+
+        #ios-mask {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, .3);
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        #ios-mask .modal {
+            width: 80vw;
+            height: 20vh;
+            position: absolute;
+            left: 10vw;
+            top: 30vh;
+            background-color: #1ab3fa;
+            border-radius: 20px;
+        }
+
+        #ios-mask .modal .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 35px;
+            height: auto;
+        }
+
+        #ios-mask .modal .content {
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        #ios-mask .modal .content h2 {
+            margin: 0;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        #ios-mask .modal .content p {
+            margin: 0 0 10px 0;
+            color: #fff;
+        }
+
+        #ios-mask .modal img {
+            width: 50px;
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        #ios-mask .modal .copy {
+            width: 100%;
+            height: 90px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        #ios-mask .modal .address {
+            width: 65vw;
+            height: 50px;
+            border-radius: 25px;
+            overflow: hidden;
+            margin: 0 auto;
+            background-color: #f4f4f4;
+            display: flex;
+            margin-top: 20px;
+        }
+
+        #ios-mask .modal .address span:nth-of-type(1) {
+            display: block;
+            width: 80%;
+            line-height: 50px;
+            padding-left: 10px;
+            box-sizing: border-box;
+        }
+
+        #ios-mask .modal .address span:nth-of-type(2) {
+            display: block;
+            width: 20%;
+            text-align: center;
+            line-height: 50px;
+            background-color: #3b8df9;
+            color: #fff;
+        }
+
+        .doc-btn {
+            font-size: .33rem;
+            margin-bottom: 3vw;
+            color: #a9a9a9;
+        }
+
+        #install-doc {
+            z-index: -1;
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            max-width: 750px;
+            font-size: .24rem;
+            overflow-y: auto;
+        }
+
+        #install-doc .fix-close {
+            position: fixed;
+            right: 0.35rem;
+            top: 0.32rem;
+            width: 0.66rem;
+            height: 0.66rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="body">
+        <div class="mask-bg"
+            style="position: absolute;left:0;top:0; width:100%;height:100%;background-color: rgba(0,0,0,.4);"></div>
+        <div class="mobile">
+            <!-- <a class="fixed-contact" href="https://t.me/azhu1" target="_blank">
+            <img src="/template/style2/image/group.png?_v=20220812" alt="">
+        </a> -->
+            
+            <div class="main" style="position: relative;">
+
+                <!-- <img style="height: 1.06rem" src="/template/style2/image/mobile/title.png?_v=20220812" alt=""> -->
+                <img style="" src="{$tpl_path}/image/conten32.png" alt="">
+
+                <!-- <img style="height: 0.36rem" src="/template/style2/image/mobile/title-en.png?_v=20220812" alt=""> -->
+                <!-- <div class="time" id="time">00:00</div>
+            <img style="height: 0.36rem" src="/template/style2/image/desktop/title-2.png?_v=20220812" alt=""> -->
+                <div style="position: absolute;top:20px;right:20px;">
+                    <a href="https://t.me/maliao66" style="color:white;font-size:12px;">
+                        商务合作：@maliao66
+                    </a>
+                </div>
+            </div>
+            <div class="fixed-footer">
+                <img class="logo" src="{$tpl_path}/image/logo.png?_v=20220812" alt="">
+                <div class="download-box">
+                    <div class="download-btn" id="downloadBtn-android">
+                        <a id="btn_down" class="copy ws-event">
+                            <i class="iconfont icon-android"></i>
+                            <span>安卓版下载</span>
+                        </a>
+                    </div>
+
+                    <!-- <div class="download-btn" id="downloadBtn-ios" style="display:none;">
+                        <a href="{$ios_url}" class="copy ws-event">
+                            <i class="iconfont icon-ios"></i>
+                            <span>IOS版下载</span>
+                        </a>
+                    </div> -->
+                </div>
+                <a class="doc-btn" href="javascript:openDoc();">安装报毒?点我查看安装教程</a>
+                <!--            <div class="android-version">-->
+                <!--                <a href="/doc">安装失败?点我查看安装教程</a>-->
+                <!--            </div>-->
+                <!-- <img class="slogan" src="/image/desktop/slogan.png?_v=20220812" alt=""> -->
+                <div style="color:white;font-size: 0.3rem;padding-bottom:10px;">本APP包含成人内容，若报毒忽略提示安装即可</div>
+            </div>
+
+        </div>
+    </div>
+    <div id="install-doc">
+        <img src="{$tpl_path}/image/doc/close.png?_v=20220812" alt="" class="fix-close" onclick="closeDoc()">
+        <iframe src="" id="install-doc-iframe" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+
+    
+
+    <script>
+        function handleDownload() {
+            layer.open({ content: '应用正在安装中,十秒后无反应请再次点击下载!', skin: 'msg', time: 8 });
+        }
+
+        function copyUrl() {
+            var aux = document.createElement("input");
+            aux.setAttribute("value", location.href);
+            document.body.appendChild(aux);
+            aux.select();
+            document.execCommand("copy");
+            document.body.removeChild(aux);
+            // alert('复制成功,请使用Safari浏览器打开');
+            layer.open({ content: '复制成功,请使用Safari浏览器打开', skin: 'msg', time: 8 });
+        }
+
+        function openMask() {
+            document.getElementById('ios-mask').style.display = 'block';
+        }
+        function closeMask() {
+            document.getElementById('ios-mask').style.display = 'none';
+        }
+        function openDoc() {
+            document.getElementById('install-doc').style.zIndex = 100;
+            document.getElementById('install-doc-iframe').setAttribute('src', '/index/index/doc');
+        }
+        function closeDoc() {
+            document.getElementById('install-doc').style.zIndex = -1;
+        }
+    </script>
+
+<script>
+    // window.setTimeout(function(){
+    //     document.getElementById("btn_down").click();
+    // },500);
+    if(isIOS){
+        document.getElementById("downloadBtn-ios").style.display='block';
+    }
+</script>
+
+<script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+<script>LA.init({id:"K4F7IXc8WYn1bi8Y",ck:"K4F7IXc8WYn1bi8Y"})</script>
+</body>
+</html>

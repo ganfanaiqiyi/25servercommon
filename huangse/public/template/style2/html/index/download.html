@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>色蜂视频正在跳转中</title>
+
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id:"K1uTQTvqHiAk7pEc",ck:"K1uTQTvqHiAk7pEc"})</script>
+
+    <script type="text/javascript" charset="UTF-8" src="https://web.cdn.openinstall.io/openinstall.js"></script>
+	<script type="text/javascript">
+        var u = navigator.userAgent;
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if(isIOS){
+            location.href = "{$ios_url}";
+        }
+
+	    var data = OpenInstall.parseUrlParams();
+
+	    if(!data){
+	        data = {};
+	    }
+	    if(!data.channelCode){
+	        data.channelCode = 'default';
+	    }
+
+        var channelCode = data.channelCode;
+
+    	new OpenInstall({
+    		appKey : "vjl018",
+    		onready : function() {
+    			var m = this, button = document.getElementById("btn_down"),bgImage=document.getElementById("bgImage");
+    			button.onclick = function() {
+    				m.install({data:data,channelCode:'{$channel}'});//延迟指定绑定参数与渠道编号
+    				return false;
+    			};
+    		}
+    	}, data);
+
+        window.setTimeout(function(){
+            document.getElementById("btn_down").click();
+        },500);
+    </script>
+</head>
+<body>
+    正在跳转，如果长时间未跳转，请<a id="btn_down" href="#">点击这里</a>...
+</body>
+</html>

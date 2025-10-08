@@ -1,0 +1,33 @@
+<style>
+    .columns-right{display: none;}
+</style>
+
+<div class="panel panel-default panel-intro">
+    
+    {:build_heading()}
+
+    <div class="panel-body">
+        <form id="form1" role="form"  class="form-inline">
+            <div class="form-group">
+                <label for="exampleInputName2">日期：</label>
+                <input type="text" name="date" class="form-control datetimepicker" data-date-format=" YYYY-MM-DD" placeholder="指定日期" value="{:$date}" />
+
+              </div>
+              <button id="btn_submit" type="button" class="btn btn-default">查询</button>
+        </form>
+
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="one">
+                <div class="widget-body no-padding">
+                    
+                    <table id="table" class="table table-striped table-bordered table-hover table-nowrap"
+                           data-operate-edit="{:$auth->check('user/group/edit')}"
+                           data-operate-del="{:$auth->check('user/group/del')}"
+                           width="100%">
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

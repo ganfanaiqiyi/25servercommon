@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>绿巨人</title>
+
+
+
+
+
+    <!--<link rel="stylesheet" type="text/css" href="/css/style.css">-->
+    
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .wrap {
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: center;
+
+            padding: 10px;
+            background-color: #18b566;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: 40px;
+
+        }
+
+        .header .title {
+            height: 20px;
+            color: white;
+            font-size: 15px;
+        }
+
+        .header .label {
+            height: 20px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .header #btn_down {
+            background-color:#71d5a1;
+            border-color: #71d5a1;
+            border-width: 1px;
+            border-style: solid;
+            box-shadow: rgb(0 0 0 / 12%) 0px 2px 4px, rgb(0 0 0 / 4%) 0px 0px 6px;
+            color: white;
+            border-radius: 100px;
+            min-width: 60px;
+            height: 30px;
+            padding: 0 8px;
+            font-size: 12px;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: row;
+            box-sizing: border-box;
+            flex-direction: row;
+        }
+
+        .footer {
+            height: 50px;
+            line-height: 50px;
+            background-color: #18b566;
+            text-align: center;
+            color: white;
+            font-size: 15px;
+        }
+
+        @media screen and (min-width: 768px) {
+            .wrap {
+                width: 450px;
+            }
+        }
+
+        .goon{
+            display: flex;
+            
+            color: white;
+            position: absolute;
+            top: 80px;
+            right: 12px;
+            font-weight: bold;
+        }
+
+        .layui-layer{
+            border-radius: 10px !important;
+            background-color: auto !important;
+        }
+        .notice-class .layui-layer-content{
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            background-color: rgb(225,215,223);
+
+        }
+        .notice-class .layui-layer-content p{
+            margin:10px 0;
+        }
+        
+        .notice-class .layui-layer-title{background:#c00; color:#fff; border: none;}
+
+        .notice-class .layui-layer-iframe .layui-layer-btn, .layui-layer-page .layui-layer-btn {
+            background-color: #18b566;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .notice-class .layui-layer-btn a{
+            background-color: rgb(252,237,177);
+            border-color: rgb(252,237,177);
+            color:#18b566;
+        }
+    </style>
+
+    <script>
+        var channelCode = '';
+    </script>
+    
+    <script type="text/javascript" charset="UTF-8" src="https://web.cdn.openinstall.io/openinstall.js"></script>
+	<script type="text/javascript">
+        var u = navigator.userAgent;
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if(isIOS){
+            var iosUrl = "{$site.ios_down_url}";
+            if(iosUrl){
+                location.href = iosUrl;
+            }
+        }
+
+        var data = OpenInstall.parseUrlParams();
+
+        if(!data){
+            data = {};
+        }
+        if(!data.channelCode){
+            data.channelCode = '{$channel}';
+        }
+
+        var channelCode = data.channelCode;
+
+        new OpenInstall({
+            appKey : "ctaon8",
+            onready : function() {
+                var m = this, button = document.getElementById("btn_down"),bgImage=document.getElementById("bgImage");
+                button.onclick = function() {
+                    m.install({data:data,channelCode:channelCode});//延迟指定绑定参数与渠道编号
+                    return false;
+                };
+            }
+        }, data);
+
+        
+    </script>
+    
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="logo"><img src="{$tpl_path}static/images/logo.png" style="width:40px;height:40px;"></div>
+            <div class="" style="flex: 1;">
+                <div class="title">绿巨人</div>
+                <div class="label">海量视频资源,精品破解APP</div>
+            </div>
+            <div class="value">
+                <button id="btn_down">点击下载</button>
+            </div>
+        </div>
+
+        <div style="background-color: #18b566;border-top:1px solid white;border-bottom: 1px solid white;">
+            
+            <img src="{$tpl_path}static/images/bg3.png" style="width:100%;" id="bgImage">
+            
+        </div>
+        <div class="footer">官网地址：https://www.dongpiandi.app</div>
+    </div>
+
+    <template id="temp_notice">
+        <div style="padding: 20px; line-height: 22px;  color: #000; font-weight: 300;">
+            <p style="text-align: center;font-weight:bold;">重要提醒</p>
+            <p>由于本APP内容为限制级内容，在安装过程中如果出现风险提示，请不要担心，忽略提示安装即可，安装完成后即可体验本APP全部内容。</p>
+            <p>
+                请收藏以下最新网址：
+
+            </p>
+            <p>
+                www.dongpiandi.app<br>
+                <!-- www.18mo9.info -->
+            </p>
+            
+        </div>
+    </template>
+    
+    
+    
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id: "Jll72VeawZBQioVD",ck: "Jll72VeawZBQioVD"})</script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    
+    <script src="https://cdn.bootcdn.net/ajax/libs/layer/3.5.1/layer.min.js"></script>
+    <script>
+        $(function(){
+            $('#btn_down').on('click',function(){
+                //notice()
+                layer.msg('由于本APP内容为限制级内容，在安装过程中如果出现风险提示，请不要担心，忽略提示安装即可，安装完成后即可体验本APP全部内容。', {
+                    time: 20000, //20s后自动关闭
+                    area: 'auto',
+                    maxWidth:'300',
+                    btn: ['明白了']
+                });
+            });
+
+            //notice();
+        });
+
+        var notice= function(){
+            layer.open({
+                skin: 'notice-class',
+                type: 1
+                ,title: false //不显示标题栏
+                ,closeBtn: false
+                ,area: '300px;'
+                ,shade: 0.3
+                ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+                ,btn: ['好的，知道了']
+                ,btnAlign: 'c'
+                ,moveType: 1 //拖拽模式，0或者1
+                ,content: $('#temp_notice').html()
+                ,success: function(layero){
+                    var btn = layero.find('.layui-layer-btn');
+                    // btn.find('.layui-layer-btn0').attr({
+                    //     href: '../index.htm'/*tpa=https://www.layui.site/*/
+                    //     ,target: '_blank'
+                    // });
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+/runtime/*
+/public/uploads/*
+.idea
+*.log
+*.css.map
+!.gitkeep
+.svn
+.vscode
+node_modules
+*.drawio
+*.txt
+*.htaccess

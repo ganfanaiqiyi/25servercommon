@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta data-n-head="true" name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <meta name="referrer" content="no-referrer" />
+    <title>射射屋</title>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .wrap {
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: center;
+
+            padding: 10px;
+            background-color: #18b566;
+        }
+
+        .header .logo {
+            width: 50px;
+            height: 40px;
+
+        }
+
+        .header .title {
+            height: 20px;
+            color: white;
+            font-size: 15px;
+        }
+
+        .header .label {
+            height: 20px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .header #btn_down {
+            background-color:#71d5a1;
+            border-color: #71d5a1;
+            border-width: 1px;
+            border-style: solid;
+            box-shadow: rgb(0 0 0 / 12%) 0px 2px 4px, rgb(0 0 0 / 4%) 0px 0px 6px;
+            color: white;
+            border-radius: 100px;
+            min-width: 60px;
+            height: 30px;
+            padding: 0 8px;
+            font-size: 12px;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: row;
+            box-sizing: border-box;
+            flex-direction: row;
+        }
+
+        .footer {
+            height: 50px;
+            line-height: 50px;
+            background-color: #18b566;
+            text-align: center;
+            color: white;
+            font-size: 15px;
+        }
+
+        @media screen and (min-width: 768px) {
+            .wrap {
+                width: 450px;
+            }
+        }
+
+        .goon{
+            display: flex;
+            
+            color: white;
+            position: absolute;
+            top: 80px;
+            right: 12px;
+            font-weight: bold;
+        }
+
+        .layui-layer{
+            border-radius: 10px !important;
+            background-color: auto !important;
+        }
+        .notice-class .layui-layer-content{
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            background-color: rgb(225,215,223);
+
+        }
+        .notice-class .layui-layer-content p{
+            margin:10px 0;
+        }
+        
+        .notice-class .layui-layer-title{background:#c00; color:#fff; border: none;}
+
+        .notice-class .layui-layer-iframe .layui-layer-btn, .layui-layer-page .layui-layer-btn {
+            background-color: #18b566;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .notice-class .layui-layer-btn a{
+            background-color: rgb(252,237,177);
+            border-color: rgb(252,237,177);
+            color:#18b566;
+        }
+    </style>
+
+    <script type="text/javascript" charset="UTF-8" src="https://web.cdn.openinstall.io/openinstall.js"></script>
+    <script type="text/javascript">
+        var u = navigator.userAgent;
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if(isIOS){
+            var iosUrl = "{$site.ios_down_url}";
+            if(iosUrl){
+                location.href = iosUrl;
+            }
+        }
+
+        var data = OpenInstall.parseUrlParams();
+
+        if(!data){
+            data = {};
+        }
+        if(!data.channelCode){
+            data.channelCode = '{$channel}';
+        }
+
+        var channelCode = data.channelCode;
+
+        new OpenInstall({
+            appKey : "ctaon8",
+            onready : function() {
+                var m = this, button = document.getElementById("btn_down"),bgImage=document.getElementById("bgImage");
+                button.onclick = function() {
+                    m.install({data:data,channelCode:channelCode});//延迟指定绑定参数与渠道编号
+                    return false;
+                };
+            }
+        }, data);
+
+        
+    </script>
+    
+</head>
+
+<body>
+    <div class="wrap">
+
+
+        <div>
+            
+            <img src="https://static.917048.xyz:9002/template/ssw/static/images/bg.jpg" style="width:100%;" id="btn_down">
+            
+        </div>
+    </div>
+
+    <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+    <script>LA.init({id:"KD7A45gqAG5OYTMt",ck:"KD7A45gqAG5OYTMt"})</script>
+
+</body>
+</html>

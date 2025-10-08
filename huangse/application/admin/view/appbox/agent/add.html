@@ -1,0 +1,59 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+    {:token()}
+    
+    <div class="form-group">
+        <label for="c-channelCode" class="control-label col-xs-12 col-sm-2">OP渠道名称:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-channelCode" class="form-control" name="row[channelCode]" type="text" value="" data-rule="required">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-password" class="control-label col-xs-12 col-sm-2">查看密码:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-password" class="form-control" name="row[password]" type="text" value="" data-rule="required;">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-name" class="control-label col-xs-12 col-sm-2">备注:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-channelName" class="form-control" name="row[channelName]" type="text"  value="" data-rule="required;">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-price" class="control-label col-xs-12 col-sm-2">单价:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-price" class="form-control" name="row[price]" type="text" value="" data-rule="required;">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-apkUrl" class="control-label col-xs-12 col-sm-2">APK地址:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-apkUrl" class="form-control" name="row[apkUrl]" type="text" value="" data-rule="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-deduction" class="control-label col-xs-12 col-sm-2">扣点(%):</label>
+        <div class="col-xs-12 col-sm-8 layui-input-inline">
+            <input id="c-deduction" class="form-control" name="row[deduction]" type="text" value="" placeholder="0-100以内数字" style="width:200px"  data-rule="required; integer[+0]; range[~100]">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">状态:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <div class="radio">
+                {:build_radios('row[status]', ['1'=>'启用', '0'=>'禁用'])}
+                <!-- <label for="row[status]-1"><input id="row[status]-1" name="row[status]" type="radio" value="1" checked /> 启用</label>
+                <label for="row[status]-0"><input id="row[status]-0" name="row[status]" type="radio" value="0" /> 禁用</label> -->
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
